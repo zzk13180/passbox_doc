@@ -1,0 +1,104 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Images from "../components/Images.astro";
+---
+
+<Layout title="passbox">
+  <main>
+    <h1>Welcome to <span class="text-gradient">Passbox</span></h1>
+    <p class="instructions">
+      🔅🔅🔅🔅🔅🔅🔅🔅🔅🔅🔅🔅🔅🔅
+      <br />
+      - Store encrypted messages
+      <br />
+      - Import/export browser bookmarks
+      <br />
+      - Export the encrypted file and import it to another computer to migrate the
+      data securely
+      <br />
+      - Open a webpage or file with an app/system tray
+      <br />
+      - Use the tool website easily and sweetly
+      <br />
+      - We do not store your password. When you set a password, only you can decrypt
+      it
+      <br />
+      - Drag and drop a file to save the link and name, and supported files can be
+      opened
+      <br />
+      🔅🔅🔅🔅🔅🔅🔅🔅🔅🔅🔅🔅🔅🔅
+    </p>
+
+    <ul role="list" class="link-card-grid">
+      <Card
+        href="https://github.com/zzk13180/passbox/releases"
+        title="Download"
+        body="download from GitHub Releases."
+      />
+    </ul>
+    <p class="instructions" style="padding: 0; margin:0; line-height: 0">
+      <video style="width: 100%; height: 100%" controls src="202304302027.mp4"
+      ></video>
+    </p>
+
+    <ul role="list" class="link-card-grid">
+      <Images body="1.png" />
+      <Images body="2.png" />
+      <Images body="10.png" />
+
+      <Images body="4.png" />
+      <Images body="5.png" />
+      <Images body="6.png" />
+
+      <Images body="7.png" />
+      <Images body="14.png" />
+      <Images body="8.png" />
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    max-width: 100ch;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .instructions {
+    line-height: 1.6;
+    margin: 1rem 0;
+    border: 1px solid rgba(var(--accent), 25%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.4rem;
+  }
+  .instructions code {
+    font-size: 0.875em;
+    font-weight: bold;
+    background: rgba(var(--accent), 12%);
+    color: rgb(var(--accent));
+    border-radius: 4px;
+    padding: 0.3em 0.45em;
+  }
+  .instructions strong {
+    color: rgb(var(--accent));
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
+</style>

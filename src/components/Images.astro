@@ -1,0 +1,47 @@
+---
+export interface Props {
+  body: string;
+  title?: string;
+}
+
+const { body, title } = Astro.props;
+---
+
+<li class="link-card">
+  <!-- <span>{title}</span> -->
+  <img src={body} alt={title} />
+</li>
+<style>
+  .link-card {
+    list-style: none;
+    display: flex;
+    /* margin-top: 0.75rem; */
+    position: relative;
+    left: 0;
+    top: 0;
+    padding: 0.25rem;
+    background-color: white;
+    background-image: none;
+    background-size: 400%;
+    border-radius: 0.6rem;
+    background-position: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+
+  .link-card > span {
+    position: absolute;
+    top: -1.25rem;
+    left: 0.25rem;
+    color: rgb(var(--accent));
+  }
+
+  .link-card > img {
+    width: 100%;
+    text-decoration: none;
+    line-height: 1.4;
+    border-radius: 0.35rem;
+    opacity: 0.8;
+  }
+
+</style>
