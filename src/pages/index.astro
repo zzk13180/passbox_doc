@@ -1,79 +1,46 @@
 ---
 import DefaultLayout from "../layouts/DefaultLayout.astro";
 import Hero from "../components/Hero.astro";
-import Feature from "../components/Feature.astro";
+import { getCollection } from "astro:content";
+
+import Grid from "../components/Grid.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
+
+import Skills from "../components/Skills.astro";
+import Footer from "../components/Footer.astro";
+
+const projects = (await getCollection("work")).sort(
+  (a, b) => b.data.sort - a.data.sort
+);
 ---
 
 <DefaultLayout title="passbox">
-  <Hero />
-  <div
-    class="relative rounded-3xl border border-gray-100 bg-white shadow-2xl shadow-gray-600/20 transition duration-500 dark:border-white/10 dark:bg-gray-900 dark:shadow-none"
-  >
-    <div
-      class="flex flex-col gap-12 divide-y p-12 dark:divide-gray-800 md:flex-row md:divide-y-0 md:divide-x"
-    >
-      <div class="relative md:w-6/12 md:pl-12">
-        <p class="text-gray-700 dark:text-white" style="line-height: 2;">
-          Introducing Passbox - the password management software that guarantees
-          complete privacy and security!
-          <br />
-          With Passbox, you can store your sensitive data without worrying about
-          data breaches or unauthorized access. Passbox is open source, secure, and
-          free, and it runs locally on your system without the need for internet
-          connectivity.
-          <br />
-          Passbox uses AES encryption algorithm to safeguard your data, which is
-          then saved in a local file for easy access. The initial password is randomly
-          generated and stored in a local file, but we recommend setting up a unique
-          password to ensure maximum security.
-        </p>
-      </div>
-      <div class="relative md:w-6/12 md:pl-12">
-        <ul role="list" class="space-y-5 py-6 text-gray-600 dark:text-gray-300">
-          <li class="space-x-2">
-            <span class="font-semibold text-primary dark:text-gray-300">✓</span>
-            <span
-              >Store your favorite URLs and frequently used file addresses for
-              easy access.</span
-            >
-          </li>
-          <li class="space-x-2">
-            <span class="font-semibold text-primary dark:text-gray-300">✓</span>
-            <span>Open URLs and files from the system tray.</span>
-          </li>
-          <li class="space-x-2">
-            <span class="font-semibold text-primary dark:text-gray-300">✓</span>
-            <span>Use tool websites easily and sweetly.</span>
-          </li>
-          <li class="space-x-2">
-            <span class="font-semibold text-primary dark:text-gray-300">✓</span>
-            <span>Drag files to store links and names.</span>
-          </li>
-          <li class="space-x-2">
-            <span class="font-semibold text-primary dark:text-gray-300">✓</span>
-            <span>Import/export browser bookmarks.</span>
-          </li>
-        </ul>
-      </div>
+  <div class="stack gap-20 lg:gap-48">
+    <div class="wrapper stack gap-8 lg:gap-20">
+      <header class="hero">
+        <Hero />
+      </header>
+
+      <Skills />
     </div>
+
+    <main class="wrapper stack gap-20 lg:gap-48">
+      <section class="section with-background with-cta">
+        <div class="gallery">
+          <Grid variant="offset">
+            {
+              projects.map((project) => (
+                <li>
+                  <PortfolioPreview project={project} />
+                </li>
+              ))
+            }
+          </Grid>
+        </div>
+      </section>
+      <Footer />
+    </main>
   </div>
-  <section class="my-12">
-    <div class="container">
-      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-        <Feature src="1.png" />
-        <Feature src="2.png" />
-        <Feature src="10.png" />
-
-        <Feature src="4.png" />
-        <Feature src="5.png" />
-        <Feature src="6.png" />
-
-        <Feature src="7.png" />
-        <Feature src="14.png" />
-        <Feature src="8.png" />
-      </div>
-    </div>
-  </section>
 </DefaultLayout>
 
 <style>

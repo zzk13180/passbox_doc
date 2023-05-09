@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 import "../assets/scss/globals.scss";
 
 export interface Props {
@@ -11,15 +12,21 @@ const { title } = Astro.props;
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
+    <meta name="description" property="og:description" content="passbox" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/passbox/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>
-    <main id="main-content">
+    <div class="stack backgrounds" id="main-content">
       <slot />
-    </main>
+    </div>
+    <script>
+      addEventListener("load", () =>
+        document.documentElement.classList.add("loaded")
+      );
+    </script>
     <style lang="scss" is:global>
       // theme settings
       :root {
@@ -36,6 +43,63 @@ const { title } = Astro.props;
         --background: var(--neutral-100);
         --primary-background: var(--primary-100);
         --neutral-background: var(--neutral-200);
+        --_placeholder-bg: linear-gradient(transparent, transparent);
+        --bg-image-main: url("assets/backgrounds/bg-main-light-800w.jpg");
+        --bg-image-main-curves: url("assets/backgrounds/bg-main-light.svg");
+        --bg-image-subtle-1: var(--_placeholder-bg);
+        --bg-image-subtle-2: var(--_placeholder-bg);
+        --bg-image-footer: var(--_placeholder-bg);
+        --bg-svg-blend-mode: overlay;
+        --bg-blend-mode: darken;
+        --bg-image-aspect-ratio: 2.25;
+        --bg-scale: 1.68;
+        --bg-aspect-ratio: calc(var(--bg-image-aspect-ratio) / var(--bg-scale));
+        --bg-gradient-size: calc(var(--bg-scale) * 100%);
+      }
+
+      :root.theme-dark {
+        --bg-image-main: url("assets/backgrounds/bg-main-dark-800w.jpg");
+        --bg-image-main-curves: url("assets/backgrounds/bg-main-dark.svg");
+        --bg-svg-blend-mode: darken;
+        --bg-blend-mode: lighten;
+      }
+
+      :root.loaded {
+        --bg-image-subtle-1: url("assets/backgrounds/bg-subtle-1-light-800w.jpg");
+        --bg-image-subtle-2: url("assets/backgrounds/bg-subtle-2-light-800w.jpg");
+        --bg-image-footer: url("assets/backgrounds/bg-footer-light-800w.jpg");
+      }
+
+      :root.loaded.theme-dark {
+        --bg-image-subtle-1: url("assets/backgrounds/bg-subtle-1-dark-800w.jpg");
+        --bg-image-subtle-2: url("assets/backgrounds/bg-subtle-2-dark-800w.jpg");
+        --bg-image-footer: url("assets/backgrounds/bg-footer-dark-800w.jpg");
+      }
+
+      .backgrounds {
+        min-height: 100%;
+        isolation: isolate;
+        background:
+					/*noise*/ url("/assets/backgrounds/noise.png") top
+            center/220px repeat,
+          /*footer*/ var(--bg-image-footer) bottom
+            center/var(--bg-gradient-size) no-repeat,
+          /*header1*/ var(--bg-image-main-curves) top
+            center/var(--bg-gradient-size) no-repeat,
+          /*header2*/ var(--bg-image-main) top center/var(--bg-gradient-size)
+            no-repeat,
+          /*base*/ var(--gray-999);
+        background-blend-mode: /*noise*/ overlay,
+          /*footer*/ var(--bg-blend-mode), /*header1*/ var(--bg-svg-blend-mode),
+          /*header2*/ normal, /*base*/ normal;
+      }
+      @media (forced-colors: active) {
+        /* Deactivate custom backgrounds for high contrast users. */
+        .backgrounds {
+          background: none;
+          background-blend-mode: none;
+          --bg-gradient-size: none;
+        }
       }
 
       // dark color scheme overrides
@@ -63,7 +127,6 @@ const { title } = Astro.props;
 
         main {
           flex: 1 0 auto;
-          border-top: 4px solid #6200ee;
         }
 
         footer {
