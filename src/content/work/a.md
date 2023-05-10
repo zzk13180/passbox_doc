@@ -1,6 +1,6 @@
 ---
 sort: 1
-img: /a.gif
+src: a.mp4
 description: |
   virtual-list 
 ---

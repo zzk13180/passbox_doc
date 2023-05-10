@@ -1,6 +1,6 @@
 ---
 sort: 2
-img: /b.gif
+src: b.mp4
 description: |
   drag in a file
 ---

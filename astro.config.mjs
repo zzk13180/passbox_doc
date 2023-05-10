@@ -9,6 +9,6 @@ export default defineConfig({
   site: "https://zzk13180.github.io",
   base: "/passbox",
   build: {
-    assets: "public",
+    assets: "csspassbox",
   },
 });
