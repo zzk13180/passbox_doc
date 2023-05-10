@@ -8,6 +8,7 @@ import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 import Skills from "../components/Skills.astro";
 import Footer from "../components/Footer.astro";
+import Feature from "../components/Feature.astro";
 
 const projects = (await getCollection("work")).sort(
   (a, b) => b.data.sort - a.data.sort
@@ -20,7 +21,6 @@ const projects = (await getCollection("work")).sort(
       <header class="hero">
         <Hero />
       </header>
-
       <Skills />
     </div>
 
@@ -38,24 +38,41 @@ const projects = (await getCollection("work")).sort(
           </Grid>
         </div>
       </section>
-      <Footer />
+      <section class="my-12">
+        <div class="container">
+          <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+            <Feature src="1.png" />
+            <Feature src="2.png" />
+            <Feature src="10.png" />
+
+            <Feature src="4.png" />
+            <Feature src="5.png" />
+            <Feature src="6.png" />
+
+            <Feature src="7.png" />
+            <Feature src="14.png" />
+            <Feature src="8.png" />
+          </div>
+        </div>
+        <Footer />
+      </section>
     </main>
   </div>
-</DefaultLayout>
 
-<style>
-  main {
-    margin: auto;
-    padding: 1.5rem;
-    max-width: 90ch;
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
-  }
-  .text-primary {
-    color: #9333ea;
-  }
-</style>
+  <style>
+    main {
+      margin: auto;
+      padding: 1.5rem;
+      max-width: 90ch;
+    }
+    .link-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+      gap: 1rem;
+      padding: 0;
+    }
+    .text-primary {
+      color: #9333ea;
+    }
+  </style>
+</DefaultLayout>

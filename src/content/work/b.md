@@ -1,7 +1,6 @@
 ---
 sort: 2
-img: /assets/stock-1.jpg
+img: /b.gif
 description: |
-  We paired with a cutting-edge music API and a team of horticulturalists
-  to build AI-generated playlists that maximize houseplant health.
+  drag in a file
 ---

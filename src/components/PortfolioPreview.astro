@@ -9,12 +9,8 @@ const { data, slug } = Astro.props.project;
 ---
 
 <div class="card">
-  <span class="title">{data.description}</span>
-  <img
-    src={data.img}
-    loading="lazy"
-    decoding="async"
-  />
+  <img src={data.img} loading="lazy" decoding="async" />
+  {data.description && <span class="title">{data.description}</span>}
 </div>
 
 <style>
@@ -28,8 +24,6 @@ const { data, slug } = Astro.props.project;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     text-decoration: none;
-    font-family: var(--font-brand);
-    font-size: var(--text-lg);
     font-weight: 500;
     transition: box-shadow var(--theme-transition);
   }
@@ -57,7 +51,7 @@ const { data, slug } = Astro.props.project;
 
   @media (min-width: 50em) {
     .card {
-      height: 22rem;
+      height: 20.5rem;
       border-radius: 1.5rem;
     }
 
