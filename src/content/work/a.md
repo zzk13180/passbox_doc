@@ -2,5 +2,5 @@
 sort: 1
 src: a.mp4
 description: |
-  virtual-list 
+  虚拟列表
 ---

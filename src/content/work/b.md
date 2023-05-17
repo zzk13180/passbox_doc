@@ -2,5 +2,5 @@
 sort: 2
 src: b.mp4
 description: |
-  drag in a file
+  拖入一个文件
 ---
