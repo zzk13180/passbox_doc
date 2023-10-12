@@ -1,6 +1,6 @@
 ---
 sort: 1
-src: a.mp4
+src: /passbox/introduction/a.mp4
 description: |
   虚拟列表
 ---
