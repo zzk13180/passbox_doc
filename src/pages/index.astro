@@ -18,6 +18,14 @@ const projects = (await getCollection("work")).sort(
 <DefaultLayout title="passbox">
   <div class="stack gap-20 lg:gap-48">
     <div class="wrapper stack gap-8 lg:gap-20">
+      <!-- TODO v1.1.0 -->
+      <div class="notify">
+        您现在浏览的是 passbox v1.0.0 版本的官网，全新版本 v1.1.0-alpha.1 已经发布，
+        <br/>
+        集成笔记应用，快捷键设置，记录编辑历史，等等...
+        <br/>
+        超多新功能欢迎您 <a href="https://github.com/zzk13180/passbox/releases">下载体验！</a>
+      </div>
       <header class="hero">
         <Hero />
       </header>
@@ -73,6 +81,16 @@ const projects = (await getCollection("work")).sort(
     }
     .text-primary {
       color: #9333ea;
+    }
+    .notify {
+      text-align: center;
+      padding: 6px;
+      width: 100%;
+      background-color: #9333ea;
+      border-radius: 6px;
+      position: relative;
+      top: 10px;
+      left: 0;
     }
   </style>
 </DefaultLayout>
